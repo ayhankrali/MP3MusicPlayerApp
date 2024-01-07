@@ -1,6 +1,15 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
 
 public class MusicPlayerGUI extends JFrame {
+    //color configurations
+    public static final Color FRAME_COLOR = Color.BLACK;
+    public static final Color TEXT_COLOR = Color.WHITE;
+
     public MusicPlayerGUI() {
         //calls JFrame constructor to configure out and set the title to "Music Player"
         super("Music Player");
@@ -21,14 +30,34 @@ public class MusicPlayerGUI extends JFrame {
         // also set the height and width
         setLayout(null);
 
+        // change the frame color
+        getContentPane().setBackground(FRAME_COLOR);
+
         addGuiComponents();
 
     }
-
     private void addGuiComponents() {
-        // add toolbar
+        // Add toolbar
         addToolbar();
+
+        // Load record image
+        ImageIcon imageIcon = loadImage("src/assets/record.png");
+
+        // Check if the imageIcon is not null
+        if (imageIcon != null) {
+            System.out.println("Image loaded successfully.");
+
+            // Create the JLabel with the loaded image
+            JLabel songImage = new JLabel(imageIcon);
+            songImage.setBounds(0, 50, getWidth() - 20, 225);
+
+            // Add the JLabel to your frame or panel
+            add(songImage);
+        } else {
+            System.err.println("Error loading image.");
+        }
     }
+
 
     private void addToolbar() {
         JToolBar toolBar = new JToolBar();
@@ -63,5 +92,19 @@ public class MusicPlayerGUI extends JFrame {
         add(toolBar);
     }
 
+    private ImageIcon loadImage(String imagePath) {
+        try {
+            //read image file from the given path
+            BufferedImage image = ImageIO.read(new File(imagePath));
+
+            //return an image icon so that our component can render the image
+            return new ImageIcon(image);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //could not find resource
+        return null ;
+    }
 
 }
