@@ -36,6 +36,7 @@ public class MusicPlayerGUI extends JFrame {
         addGuiComponents();
 
     }
+
     private void addGuiComponents() {
         // Add toolbar
         addToolbar();
@@ -50,13 +51,20 @@ public class MusicPlayerGUI extends JFrame {
             // Create the JLabel with the loaded image
             JLabel songImage = new JLabel(imageIcon);
             songImage.setBounds(0, 50, getWidth() - 20, 225);
-
-            // Add the JLabel to your frame or panel
             add(songImage);
+
+            // Song title
+            JLabel songTitle = new JLabel("Song Title");
+            songTitle.setBounds(0, 285, getWidth() - 10, 30);
+            songTitle.setFont(new Font("Dialog", Font.BOLD, 24));
+            songTitle.setForeground(TEXT_COLOR);  // Assuming TEXT_COLOR is properly defined
+            songTitle.setHorizontalAlignment(SwingConstants.CENTER);
+            add(songTitle);  // Add the JLabel
         } else {
             System.err.println("Error loading image.");
         }
     }
+
 
 
     private void addToolbar() {
@@ -104,7 +112,7 @@ public class MusicPlayerGUI extends JFrame {
         }
 
         //could not find resource
-        return null ;
+        return null;
     }
 
 }
