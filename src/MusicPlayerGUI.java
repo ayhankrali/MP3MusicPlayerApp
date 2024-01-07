@@ -2,7 +2,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.File;
 
 public class MusicPlayerGUI extends JFrame {
@@ -60,12 +59,26 @@ public class MusicPlayerGUI extends JFrame {
             songTitle.setForeground(TEXT_COLOR);  // Assuming TEXT_COLOR is properly defined
             songTitle.setHorizontalAlignment(SwingConstants.CENTER);
             add(songTitle);  // Add the JLabel
+
+            //song artist
+            JLabel songArtist = new JLabel("Artist");
+            songArtist.setBounds(0,315,getWidth()-10,30);
+            songArtist.setFont(new Font("Dialog", Font.PLAIN, 24));
+            songArtist.setForeground(TEXT_COLOR);  // Assuming TEXT_COLOR is properly defined
+            songArtist.setHorizontalAlignment(SwingConstants.CENTER);
+            add(songArtist);  // Add the JLabel
+
+            //playback slider
+            JSlider playbackSlider = new JSlider(JSlider.HORIZONTAL,0,100,0);
+            playbackSlider.setBounds(getWidth()/2 - 300/2, 365, 300, 40);
+
+
+
+
         } else {
             System.err.println("Error loading image.");
         }
     }
-
-
 
     private void addToolbar() {
         JToolBar toolBar = new JToolBar();
