@@ -1,6 +1,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -8,6 +10,14 @@ public class MusicPlayerGUI extends JFrame {
     //color configurations
     public static final Color FRAME_COLOR = Color.BLACK;
     public static final Color TEXT_COLOR = Color.WHITE;
+
+    private MusicPlayer musicPlayer;
+
+    //allow  us to use file explorer in our app
+    private JFileChooser jFileChooser;
+    private JLabel songTitle , songArtist ;
+
+
 
     public MusicPlayerGUI() {
         //calls JFrame constructor to configure out and set the title to "Music Player"
@@ -32,6 +42,13 @@ public class MusicPlayerGUI extends JFrame {
         // change the frame color
         getContentPane().setBackground(FRAME_COLOR);
 
+        musicPlayer = new MusicPlayer();
+        jFileChooser = new JFileChooser();
+
+
+        //set a default path for file explorer
+        jFileChooser.setCurrentDirectory(new File("src/assets"));
+
         addGuiComponents();
 
     }
@@ -53,7 +70,7 @@ public class MusicPlayerGUI extends JFrame {
             add(songImage);
 
             // Song title
-            JLabel songTitle = new JLabel("Song Title");
+            songTitle = new JLabel("Song Title");
             songTitle.setBounds(0, 285, getWidth() - 10, 30);
             songTitle.setFont(new Font("Dialog", Font.BOLD, 24));
             songTitle.setForeground(TEXT_COLOR);  // Assuming TEXT_COLOR is properly defined
@@ -61,22 +78,22 @@ public class MusicPlayerGUI extends JFrame {
             add(songTitle);  // Add the JLabel
 
             //song artist
-            JLabel songArtist = new JLabel("Artist");
-            songArtist.setBounds(0,315,getWidth()-10,30);
+            songArtist = new JLabel("Artist");
+            songArtist.setBounds(0, 315, getWidth() - 10, 30);
             songArtist.setFont(new Font("Dialog", Font.PLAIN, 24));
             songArtist.setForeground(TEXT_COLOR);  // Assuming TEXT_COLOR is properly defined
             songArtist.setHorizontalAlignment(SwingConstants.CENTER);
             add(songArtist);  // Add the JLabel
 
             //playback slider
-            JSlider playbackSlider = new JSlider(JSlider.HORIZONTAL,0,100,0);
-            playbackSlider.setBounds(getWidth()/2 - 300/2, 365, 300, 40);
+            JSlider playbackSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
+            playbackSlider.setBounds(getWidth() / 2 - 300 / 2, 365, 300, 40);
             playbackSlider.setBackground(null);
             add(playbackSlider);
 
             //playback buttons(i.e , previous , play , next)
             addPlaybackBtns();
-            
+
         } else {
             System.err.println("Error loading image.");
         }
@@ -120,12 +137,14 @@ public class MusicPlayerGUI extends JFrame {
             add(playbackBtns);
 
 
-
         } else {
             System.err.println("Error loading previous button image.");
         }
 
+
     }
+
+    //private void updateSongTitleAndArtist
 
 
     private void addToolbar() {
@@ -145,6 +164,22 @@ public class MusicPlayerGUI extends JFrame {
 
         //add the "Load song" item in the songMenu
         JMenuItem loadSong = new JMenuItem("Load Song");
+        loadSong.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFileChooser.showOpenDialog(MusicPlayerGUI.this);
+                File selectFile = jFileChooser.getSelectedFile();
+
+                if (selectFile != null) {
+                    //create a song obj based a selected file
+                    Song song = new Song(selectFile.getPath());
+
+                    //load song in music player
+
+                    musicPlayer.loadSong(song);
+                }
+            }
+        });
         songMenu.add(loadSong);
 
         //add the playlist menu
