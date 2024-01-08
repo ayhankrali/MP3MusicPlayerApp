@@ -109,6 +109,10 @@ public class MusicPlayerGUI extends JFrame {
             pauseButton.setBackground(null);
             playbackBtns.add(pauseButton);
 
+            //next button
+            JButton nextButton = new JButton(loadImage("src/assets/next.png"));
+
+
 
 
         } else {
