@@ -71,14 +71,38 @@ public class MusicPlayerGUI extends JFrame {
             //playback slider
             JSlider playbackSlider = new JSlider(JSlider.HORIZONTAL,0,100,0);
             playbackSlider.setBounds(getWidth()/2 - 300/2, 365, 300, 40);
+            playbackSlider.setBackground(null);
+            add(playbackSlider);
 
-
-
-
+            //playback buttons(i.e , previous , play , next)
+            addPlaybackBtns();
+            
         } else {
             System.err.println("Error loading image.");
         }
     }
+
+    private void addPlaybackBtns() {
+        JPanel playbackBtns = new JPanel();
+        playbackBtns.setBounds(0, 435, getWidth() - 10, 80);
+        playbackBtns.setBackground(null);
+
+        // Previous button
+        ImageIcon prevButtonIcon = loadImage("src/assets/previous.png");
+
+        if (prevButtonIcon != null) {
+            JButton prevButton = new JButton(prevButtonIcon);
+            prevButton.setBorderPainted(false);
+            prevButton.setBackground(null);
+            playbackBtns.add(prevButton);
+        } else {
+            System.err.println("Error loading previous button image.");
+        }
+
+        // Add playbackBtns panel to your frame or panel
+        add(playbackBtns);
+    }
+
 
     private void addToolbar() {
         JToolBar toolBar = new JToolBar();
