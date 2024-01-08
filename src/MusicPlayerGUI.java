@@ -95,11 +95,26 @@ public class MusicPlayerGUI extends JFrame {
             prevButton.setBorderPainted(false);
             prevButton.setBackground(null);
             playbackBtns.add(prevButton);
+
+
+            //play button
+            JButton playButton = new JButton(loadImage("src/assets/play.png"));
+            playButton.setBorderPainted(false);
+            playButton.setBackground(null);
+            playbackBtns.add(playButton);
+
+            //pause button
+            JButton pauseButton = new JButton((loadImage("src/assets/pause.png")));
+            pauseButton.setBorderPainted(false);
+            pauseButton.setBackground(null);
+            playbackBtns.add(pauseButton);
+
+
+
         } else {
             System.err.println("Error loading previous button image.");
         }
-
-        // Add playbackBtns panel to your frame or panel
+        // Add playbackBtns panel
         add(playbackBtns);
     }
 
