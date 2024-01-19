@@ -40,10 +40,7 @@ Feel the vibe and want to contribute? Follow these steps:
 3. **Commit your changes:** `git commit -m 'Add new feature'`.
 4. **Push to the branch:** `git push origin feature/new-feature`.
 5. **Submit a pull request.**
-
-## License
-This project is licensed under the [MIT License](LICENSE.md).
-
+6. 
 ## Acknowledgments
 Hats off to the brilliant minds behind Mp3Magic, JLayer, and JAudioTagger for their invaluable contributions to this project.
 
