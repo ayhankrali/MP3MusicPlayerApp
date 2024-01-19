@@ -21,7 +21,8 @@ Welcome to the MP3 Music Player App, a feature-rich Java application designed to
 - 🔃 **Load Custom Playlists:** Switch between playlists with ease.
 
 ## Screenshots
-![Screenshot 1](/path/to/screenshot1.png)
+![Screenshot 1](![Екранна снимка (13)](https://github.com/ayhankrali/MP3MusicPlayerApp/assets/134217567/46fddf33-1ba1-46c8-9143-7f3f16fbf17a)
+)
 ![Screenshot 2](/path/to/screenshot2.png)
 
 ## Getting Started
