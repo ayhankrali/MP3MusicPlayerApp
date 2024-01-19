@@ -1,7 +1,7 @@
 # MP3 Music Player App
 
 ## Introduction
-Welcome to the MP3 Music Player App, a feature-rich Java application designed to elevate your music experience. Dive into the [full tutorial](#) to explore the intricacies of the project's design and functionality.
+Welcome to the MP3 Music Player App, a feature-rich Java application designed to elevate your music experience.
 
 ## Technologies/Frameworks
 - **JDK 18+**: Java Version
